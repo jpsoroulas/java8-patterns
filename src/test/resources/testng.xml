@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<suite name="java revisit" verbose="1">
+    <test name="Test java revist" preserve-order="true">
+        <packages>
+      		<package name="jsp.tutorial.java8.test.patterns" />
+      		<package name="jsp.tutorial.java8.test.streams" />
+   		</packages>
+    </test>
+</suite>
