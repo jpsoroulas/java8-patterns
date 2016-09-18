@@ -60,7 +60,7 @@ public class GroupTest extends TestSupport {
             })
         .flatMap(a -> Arrays.stream(a)) /* Flatten the array */
         .collect(Collectors.groupingBy(Degree::getField)); /* Group by degree field */
-    //				.forEach((k, v) -> LOG.info("key {}, value {}", k, v));
+    //        .forEach((k, v) -> LOG.info("key {}, value {}", k, v));
     /* Check the groups size */
     Assert.assertEquals(res.get(DegreeField.ENGINEERING).size(), 5);
     Assert.assertEquals(res.get(DegreeField.CHEMISTRY).size(), 5);

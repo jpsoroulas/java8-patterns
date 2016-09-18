@@ -30,7 +30,7 @@ public class ComparatorTest extends TestSupport {
     /* Sort by the list by name using Comparator interface */
     candidates.sort((c1, c2) -> c1.getName().compareTo(c2.getName()));
     /* Print the sorted collection */
-    //		DataUtils.printList(candidates);
+    //    DataUtils.printList(candidates);
     /* Check the order */
     Assert.assertTrue(DataUtils.isSorted(
         candidates,
@@ -48,7 +48,7 @@ public class ComparatorTest extends TestSupport {
         Comparator.comparing(Candidate::getName)
             .thenComparingInt(Candidate::getAge));
     /* Print the sorted collection */
-    //		DataUtils.printList(candidates);
+    //    DataUtils.printList(candidates);
     /* Check the order */
     Assert.assertTrue(DataUtils.isSorted(
         candidates,
