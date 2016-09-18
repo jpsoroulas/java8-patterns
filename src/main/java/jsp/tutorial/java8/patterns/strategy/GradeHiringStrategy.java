@@ -10,19 +10,19 @@ import jsp.tutorial.java8.patterns.Candidate;
  */
 public class GradeHiringStrategy implements HiringStrategy {
 
-	private int threashold;
+  private int threashold;
 
-	public GradeHiringStrategy() {
-		this(8);
-	}
+  public GradeHiringStrategy() {
+    this(8);
+  }
 
-	public GradeHiringStrategy(int threashold) {
-		this.threashold = threashold;
-	}
+  public GradeHiringStrategy(int threashold) {
+    this.threashold = threashold;
+  }
 
-	@Override
-	public boolean hire(Candidate candidate) {
-		return StrategyAlgorithms.grade(candidate, threashold);
-	}
+  @Override
+  public boolean hire(Candidate candidate) {
+    return StrategyAlgorithms.grade(candidate, threashold);
+  }
 
 }

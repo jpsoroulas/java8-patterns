@@ -17,14 +17,14 @@ import jsp.tutorial.java8.patterns.VariousUtils;
  */
 public class EmailDispatcher extends MessageDispather {
 
-	private static final Logger LOG = LoggerFactory.getLogger(EmailDispatcher.class);
+  private static final Logger LOG = LoggerFactory.getLogger(EmailDispatcher.class);
 
-	public void doSend(String message, String... recipients) {
-		/* Some dummy implementation */
-		Arrays.stream(recipients).forEach(
-				recipient -> {
-					LOG.info("Sending email to {}, : {}", recipient, message);
-					VariousUtils.keepBusy(TimeUnit.MILLISECONDS, 10);
-				});
-	}
+  public void doSend(String message, String... recipients) {
+    /* Some dummy implementation */
+    Arrays.stream(recipients).forEach(
+        recipient -> {
+          LOG.info("Sending email to {}, : {}", recipient, message);
+          VariousUtils.keepBusy(TimeUnit.MILLISECONDS, 10);
+        });
+  }
 }

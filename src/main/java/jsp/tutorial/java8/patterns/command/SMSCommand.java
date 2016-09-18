@@ -7,18 +7,18 @@ package jsp.tutorial.java8.patterns.command;
  */
 public class SMSCommand implements Runnable {
 
-	SMSDispatcher dispatcher;
+  private MessageDispather dispatcher;
 
-	MessageData messageData;
+  private MessageData messageData;
 
-	public SMSCommand(SMSDispatcher dispatcher, MessageData messageData) {
-		this.dispatcher = dispatcher;
-		this.messageData = messageData;
-	}
+  public SMSCommand(MessageDispather dispatcher, MessageData messageData) {
+    this.dispatcher = dispatcher;
+    this.messageData = messageData;
+  }
 
-	@Override
-	public void run() {
-		dispatcher.send(messageData.getMessage(), messageData.getRecipients());
-	}
+  @Override
+  public void run() {
+    dispatcher.send(messageData.getMessage(), messageData.getRecipients());
+  }
 
 }

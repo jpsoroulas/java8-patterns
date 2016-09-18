@@ -11,19 +11,19 @@ import jsp.tutorial.java8.patterns.Degree.DegreeField;
  */
 public class DegreeRelevantHiringStrategy implements HiringStrategy {
 
-	private DegreeField degreeField;
+  private DegreeField degreeField;
 
-	public DegreeRelevantHiringStrategy() {
-		this(DegreeField.ENGINEERING);
-	}
+  public DegreeRelevantHiringStrategy() {
+    this(DegreeField.ENGINEERING);
+  }
 
-	public DegreeRelevantHiringStrategy(DegreeField degreeField) {
-		this.degreeField = degreeField;
-	}
+  public DegreeRelevantHiringStrategy(DegreeField degreeField) {
+    this.degreeField = degreeField;
+  }
 
-	@Override
-	public boolean hire(Candidate candidate) {
-		return StrategyAlgorithms.degree(candidate, degreeField);
-	}
+  @Override
+  public boolean hire(Candidate candidate) {
+    return StrategyAlgorithms.degree(candidate, degreeField);
+  }
 
 }

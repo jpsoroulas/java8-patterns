@@ -13,16 +13,16 @@ import org.apache.commons.lang3.Validate;
  */
 public abstract class MessageDispather {
 
-	public void send(String message, String... recipients) {
-		// Perform some validation
-		Validate.notNull(message, "Undefined message!");
-		Validate.notEmpty(recipients, "At least one recipient should be specified");
-		Arrays.stream(recipients).forEach(recipient -> Validate.notBlank(recipient));
+  public void send(String message, String... recipients) {
+    // Perform some validation
+    Validate.notNull(message, "Undefined message!");
+    Validate.notEmpty(recipients, "At least one recipient should be specified");
+    Arrays.stream(recipients).forEach(recipient -> Validate.notBlank(recipient));
 
-		// Call the actual functionality
-		doSend(message, recipients);
-	}
+    // Call the actual functionality
+    doSend(message, recipients);
+  }
 
-	protected abstract void doSend(String message, String... recipients);
+  protected abstract void doSend(String message, String... recipients);
 
 }

@@ -7,13 +7,13 @@ package jsp.tutorial.java8.patterns.chain;
  */
 public class UnsupportedRequestException extends RuntimeException {
 
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	public UnsupportedRequestException() {
-	}
+  public UnsupportedRequestException() {
+  }
 
-	public UnsupportedRequestException(String message) {
-		super(message);
-	}
+  public UnsupportedRequestException(String message) {
+    super(message);
+  }
 
 }

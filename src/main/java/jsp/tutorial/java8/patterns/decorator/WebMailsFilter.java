@@ -12,16 +12,16 @@ import org.slf4j.LoggerFactory;
  */
 public class WebMailsFilter extends WebFilterDecorator {
 
-	private static final Logger LOG = LoggerFactory.getLogger(WebMailsFilter.class);
+  private static final Logger LOG = LoggerFactory.getLogger(WebMailsFilter.class);
 
-	public WebMailsFilter(WebFilter webFilter) {
-		super(webFilter);
-	}
+  public WebMailsFilter(WebFilter webFilter) {
+    super(webFilter);
+  }
 
-	@Override
-	public List<String> filter(List<String> urls) {
-		LOG.info("Filter web mails");
-		return WebFiltersAlgorithms.removeWebMails(super.filter(urls));
-	}
+  @Override
+  public List<String> filter(List<String> urls) {
+    LOG.info("Filter web mails");
+    return WebFiltersAlgorithms.removeWebMails(super.filter(urls));
+  }
 
 }

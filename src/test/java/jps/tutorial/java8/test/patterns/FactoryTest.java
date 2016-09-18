@@ -22,40 +22,40 @@ import jsp.tutorial.java8.patterns.factory.ServerComputer;
 @Test(enabled = true)
 public class FactoryTest extends TestSupport {
 
-	private static final Logger LOG = LoggerFactory.getLogger(FactoryTest.class);
+  private static final Logger LOG = LoggerFactory.getLogger(FactoryTest.class);
 
-	/**
-	 * Tests the {@link HomeComputer} 'old-way' creation.
-	 */
-	public void createHomeComputer() {
-		/* Create a home computer with the built-in specs */
-		Computer computer = ComputerFactory.create(ComputerModel.HOME);
-		ComputerSpecs spec = computer.getSpecs();
-		ComputerSpecs sdspec = ComputerSpecsBuilder.buildStandardSpec();
-		/* Test the results */
-		Assert.assertEquals(spec.getCores(), sdspec.getCores(),
-				"Unexpected number of cores");
-		Assert.assertEquals(spec.getDisks(), sdspec.getDisks(),
-				"Unexpected number of disks");
-		Assert.assertEquals(spec.getMemory(), sdspec.getMemory(),
-				"Unexpected memory size");
-	}
+  /**
+   * Tests the {@link HomeComputer} 'old-way' creation.
+   */
+  public void createHomeComputer() {
+    /* Create a home computer with the built-in specs */
+    Computer computer = ComputerFactory.create(ComputerModel.HOME);
+    ComputerSpecs spec = computer.getSpecs();
+    ComputerSpecs sdspec = ComputerSpecsBuilder.buildStandardSpec();
+    /* Test the results */
+    Assert.assertEquals(spec.getCores(), sdspec.getCores(),
+        "Unexpected number of cores");
+    Assert.assertEquals(spec.getDisks(), sdspec.getDisks(),
+        "Unexpected number of disks");
+    Assert.assertEquals(spec.getMemory(), sdspec.getMemory(),
+        "Unexpected memory size");
+  }
 
-	/**
-	 * Tests the {@link ServerComputer} 'lambda-way' creation.
-	 */
-	public void createServerComputerLambda() {
-		/* Create a server computer with the built-in specs */
-		Computer computer = ComputerFactory.createLambda(ComputerModel.SERVER);
-		ComputerSpecs spec = computer.getSpecs();
-		ComputerSpecs exspec = ComputerSpecsBuilder.buildExtendedSpec();
-		/* Test the results */
-		Assert.assertEquals(spec.getCores(), exspec.getCores(),
-				"Unexpected number of cores");
-		Assert.assertEquals(spec.getDisks(), exspec.getDisks(),
-				"Unexpected number of disks");
-		Assert.assertEquals(spec.getMemory(), exspec.getMemory(),
-				"Unexpected memory size");
-	}
+  /**
+   * Tests the {@link ServerComputer} 'lambda-way' creation.
+   */
+  public void createServerComputerLambda() {
+    /* Create a server computer with the built-in specs */
+    Computer computer = ComputerFactory.createLambda(ComputerModel.SERVER);
+    ComputerSpecs spec = computer.getSpecs();
+    ComputerSpecs exspec = ComputerSpecsBuilder.buildExtendedSpec();
+    /* Test the results */
+    Assert.assertEquals(spec.getCores(), exspec.getCores(),
+        "Unexpected number of cores");
+    Assert.assertEquals(spec.getDisks(), exspec.getDisks(),
+        "Unexpected number of disks");
+    Assert.assertEquals(spec.getMemory(), exspec.getMemory(),
+        "Unexpected memory size");
+  }
 
 }

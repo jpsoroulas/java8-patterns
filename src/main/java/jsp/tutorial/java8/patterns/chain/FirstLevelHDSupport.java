@@ -7,16 +7,16 @@ package jsp.tutorial.java8.patterns.chain;
  */
 public class FirstLevelHDSupport extends HDSupport {
 
-	public FirstLevelHDSupport() {
-	}
+  public FirstLevelHDSupport() {
+  }
 
-	public FirstLevelHDSupport(HDSupport nextSupport) {
-		super(nextSupport);
-	}
+  public FirstLevelHDSupport(HDSupport nextSupport) {
+    super(nextSupport);
+  }
 
-	@Override
-	public SupportRequest doHandle(SupportRequest request) {
-		return HDSupportHandlerAlgorithms.firstLevelSupport(request);
-	}
+  @Override
+  public SupportRequest doHandle(SupportRequest request) {
+    return HDSupportHandlerAlgorithms.firstLevelSupport(request);
+  }
 
 }

@@ -10,18 +10,18 @@ import java.util.List;
  */
 public class WebFilterDecorator implements WebFilter {
 
-	/**
-	 * The wrapped filter.
-	 */
-	protected WebFilter webFilter;
+  /**
+   * The wrapped filter.
+   */
+  protected WebFilter webFilter;
 
-	public WebFilterDecorator(WebFilter webFilter) {
-		this.webFilter = webFilter;
-	}
+  public WebFilterDecorator(WebFilter webFilter) {
+    this.webFilter = webFilter;
+  }
 
-	@Override
-	public List<String> filter(List<String> urls) {
-		return webFilter.filter(urls);
-	}
+  @Override
+  public List<String> filter(List<String> urls) {
+    return webFilter.filter(urls);
+  }
 
 }

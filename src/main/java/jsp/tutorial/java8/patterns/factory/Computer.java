@@ -11,25 +11,25 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class Computer {
 
-	private static final Logger LOG = LoggerFactory.getLogger(Computer.class);
+  private static final Logger LOG = LoggerFactory.getLogger(Computer.class);
 
-	public enum ComputerModel {
-		HOME, SERVER;
-	}
+  public enum ComputerModel {
+    HOME, SERVER;
+  }
 
-	protected ComputerSpecs specs;
+  protected ComputerSpecs specs;
 
-	public Computer(ComputerSpecs spec) {
-		this.specs = spec;
-	}
+  public Computer(ComputerSpecs spec) {
+    this.specs = spec;
+  }
 
-	/**
-	 * Returns the computer specs.
-	 *
-	 * @return the specs.
-	 */
-	public ComputerSpecs getSpecs() {
-		return specs;
-	}
+  /**
+   * Returns the computer specs.
+   *
+   * @return the specs.
+   */
+  public ComputerSpecs getSpecs() {
+    return specs;
+  }
 
 }

@@ -12,12 +12,12 @@ import org.slf4j.LoggerFactory;
  */
 public class SimpleFilter implements WebFilter {
 
-	private static final Logger LOG = LoggerFactory.getLogger(SimpleFilter.class);
+  private static final Logger LOG = LoggerFactory.getLogger(SimpleFilter.class);
 
-	@Override
-	public List<String> filter(List<String> urls) {
-		LOG.info("Filter social media sites");
-		return WebFiltersAlgorithms.removeSocialNetworks(urls);
-	}
+  @Override
+  public List<String> filter(List<String> urls) {
+    LOG.info("Filter social media sites");
+    return WebFiltersAlgorithms.removeSocialNetworks(urls);
+  }
 
 }

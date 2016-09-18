@@ -25,48 +25,48 @@ import jsp.tutorial.java8.patterns.decorator.WebMailsFilter;
 @Test(enabled = true)
 public class DecoratorTest extends TestSupport {
 
-	private static final Logger LOG = LoggerFactory.getLogger(DecoratorTest.class);
+  private static final Logger LOG = LoggerFactory.getLogger(DecoratorTest.class);
 
-	private final List<String> URLs = Arrays.asList(
-			"https://www.facebook.com/",
-			"https://twitter.com/",
-			"https://mail.google.com",
-			"http://www.bbc.com/news",
-			"http://www.a.site/");
+  private final List<String> URLs = Arrays.asList(
+      "https://www.facebook.com/",
+      "https://twitter.com/",
+      "https://mail.google.com",
+      "http://www.bbc.com/news",
+      "http://www.a.site/");
 
-	/**
-	 * Tests the 'old-way' web filters decorators.
-	 */
-	public void testWebFilters() {
-		/* Create a simple filter with the 'old-way' */
-		WebFilter filter = new SimpleFilter();
-		/* Create a filter decorator with the 'old-way' */
-		WebFilter filterDecorator = new NewsSitesFilter(new WebMailsFilter(filter));
-		/* Test the results */
-		Assert.assertEquals(filter.filter(URLs).size(), 3,
-				"Only social media sites should be filtered");
-		Assert.assertEquals(filterDecorator.filter(URLs).size(), 1,
-				"Social media, web mail and news sites should be filtered");
-	}
+  /**
+   * Tests the 'old-way' web filters decorators.
+   */
+  public void testWebFilters() {
+    /* Create a simple filter with the 'old-way' */
+    WebFilter filter = new SimpleFilter();
+    /* Create a filter decorator with the 'old-way' */
+    WebFilter filterDecorator = new NewsSitesFilter(new WebMailsFilter(filter));
+    /* Test the results */
+    Assert.assertEquals(filter.filter(URLs).size(), 3,
+        "Only social media sites should be filtered");
+    Assert.assertEquals(filterDecorator.filter(URLs).size(), 1,
+        "Social media, web mail and news sites should be filtered");
+  }
 
-	/**
-	 * Tests the 'lambda-way' web filters decorators.
-	 */
-	public void testWebFiltersLambda() {
-		/* Create a simple filter with the 'lambda-way' */
-		Function<List<String>, List<String>> filter = WebFiltersAlgorithms::removeSocialNetworks;
-		/* Create a filter decorator with the 'lambda-way' */
-		Function<List<String>, List<String>> filterDecorator = Stream.<Function<List<String>, List<String>>> of(
-				WebFiltersAlgorithms::removeSocialNetworks,
-				WebFiltersAlgorithms::removeWebMails,
-				WebFiltersAlgorithms::removeNewsSites)
-				.reduce((f, n) -> f.compose(n))
-				.get();
-		/* Test the results */
-		Assert.assertEquals(filter.apply(URLs).size(), 3,
-				"Only social media sites should be filtered");
-		Assert.assertEquals(filterDecorator.apply(URLs).size(), 1,
-				"Social media, web mail and news sites should be filtered");
-	}
+  /**
+   * Tests the 'lambda-way' web filters decorators.
+   */
+  public void testWebFiltersLambda() {
+    /* Create a simple filter with the 'lambda-way' */
+    Function<List<String>, List<String>> filter = WebFiltersAlgorithms::removeSocialNetworks;
+    /* Create a filter decorator with the 'lambda-way' */
+    Function<List<String>, List<String>> filterDecorator = Stream.<Function<List<String>, List<String>>> of(
+        WebFiltersAlgorithms::removeSocialNetworks,
+        WebFiltersAlgorithms::removeWebMails,
+        WebFiltersAlgorithms::removeNewsSites)
+        .reduce((f, n) -> f.compose(n))
+        .get();
+    /* Test the results */
+    Assert.assertEquals(filter.apply(URLs).size(), 3,
+        "Only social media sites should be filtered");
+    Assert.assertEquals(filterDecorator.apply(URLs).size(), 1,
+        "Social media, web mail and news sites should be filtered");
+  }
 
 }

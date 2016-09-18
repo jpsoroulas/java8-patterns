@@ -12,16 +12,16 @@ import org.slf4j.LoggerFactory;
  */
 public class NewsSitesFilter extends WebFilterDecorator {
 
-	private static final Logger LOG = LoggerFactory.getLogger(NewsSitesFilter.class);
+  private static final Logger LOG = LoggerFactory.getLogger(NewsSitesFilter.class);
 
-	public NewsSitesFilter(WebFilter webFilter) {
-		super(webFilter);
-	}
+  public NewsSitesFilter(WebFilter webFilter) {
+    super(webFilter);
+  }
 
-	@Override
-	public List<String> filter(List<String> urls) {
-		LOG.info("Filter news web sites");
-		return WebFiltersAlgorithms.removeNewsSites(super.filter(urls));
-	}
+  @Override
+  public List<String> filter(List<String> urls) {
+    LOG.info("Filter news web sites");
+    return WebFiltersAlgorithms.removeNewsSites(super.filter(urls));
+  }
 
 }

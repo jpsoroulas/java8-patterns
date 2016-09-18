@@ -7,21 +7,21 @@ package jsp.tutorial.java8.patterns.command;
  */
 public class MessageData {
 
-	private String[] recipients;
+  private String[] recipients;
 
-	private String message;
+  private String message;
 
-	public MessageData(String message, String... recipients) {
-		this.message = message;
-		this.recipients = recipients;
-	}
+  public MessageData(String message, String... recipients) {
+    this.message = message;
+    this.recipients = recipients;
+  }
 
-	public String getMessage() {
-		return message;
-	}
+  public String getMessage() {
+    return message;
+  }
 
-	public String[] getRecipients() {
-		return recipients;
-	}
+  public String[] getRecipients() {
+    return recipients;
+  }
 
 }
