@@ -63,9 +63,9 @@ public class CommandTest extends TestSupport {
 					MessageData msgData = new MessageData(String.format(message, candidate.getName()), cinfo.getContact());
 					/* Create the appropriate concrete command and inject the respective receivers */
 					/* ------------ The old way ------------ */
-					//						Runnable command = cinfo.isEmail()
-					//								? new EmailCommand(emailDispatcher, msgData)
-					//								: new SMSCommand(smsDispatcher, msgData);
+					// Runnable command = cinfo.isEmail()
+					//  ? new EmailCommand(emailDispatcher, msgData)
+					//	: new SMSCommand(smsDispatcher, msgData);
 					/* ------------ The lambda way ------------*/
 					Runnable command = cinfo.isEmail()
 							? () -> {

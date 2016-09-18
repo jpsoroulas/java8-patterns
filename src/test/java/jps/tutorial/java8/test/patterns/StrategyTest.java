@@ -79,11 +79,13 @@ public class StrategyTest extends TestSupport {
 		employer.setHiringStrategy(strategy);
 		/* Build the candidates */
 		List<Candidate> candidates = DataUtils.buildCandidates(100);
-		/* Find the expected number of the hired candidates by counting the ones that has ENGINEERING degree field */
+		/* Find the expected number of the hired candidates by counting the ones that
+		 * has ENGINEERING degree field */
 		long expectedHired = candidates.stream()
 				.filter(c -> c.getDegrees().stream().anyMatch(d -> field == d.getField()))
 				.count();
-		/* Find the actual number of the hired candidates by counting the ones that hired by applying the degree relevant hiring strategy */
+		/* Find the actual number of the hired candidates by counting the ones that
+		 * hired by applying the degree relevant hiring strategy */
 		long actualHired = candidates.stream()
 				.filter(c -> employer.hire(c))
 				.count();
@@ -124,11 +126,13 @@ public class StrategyTest extends TestSupport {
 		employer.setHiringStrategy(strategy);
 		/* Build the candidates */
 		List<Candidate> candidates = DataUtils.buildCandidates(100);
-		/* Find the expected number of the hired candidates by counting the ones that has grade greater or equals to the threshold */
+		/* Find the expected number of the hired candidates by counting the ones that
+		 * has grade greater or equals to the threshold */
 		long expectedHired = candidates.stream()
 				.filter(c -> c.getDegrees().stream().anyMatch(d -> d.getGrade() >= threshold))
 				.count();
-		/* Find the actual number of the hired candidates by counting the ones that hired by applying the grade hiring strategy */
+		/* Find the actual number of the hired candidates by counting the ones that
+		 * hired by applying the grade hiring strategy */
 		long actualHired = candidates.stream()
 				.filter(c -> employer.hire(c))
 				.count();

@@ -72,7 +72,7 @@ public class BaseTemplatePatternTest extends TestSupport {
 				})
 				/* In this case, the reversed() breaks the compiler's type inferencing mechanism,
 				 * use lambda expression providing explicitly the type parameters */
-				//				.sorted(Comparator.comparing(Pair::getRight).reversed())
+				// .sorted(Comparator.comparing(Pair::getRight).reversed())
 				.sorted(Comparator.comparing(
 						(Pair<String, Integer> p) -> p.getRight()).reversed()) /* sort the stream by score */
 				.collect(Collectors.toList()); /* collect the stream into a list */
