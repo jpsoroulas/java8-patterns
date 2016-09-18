@@ -16,7 +16,7 @@ At the Chain of Responsibility the following components are participating:
 * The _ConcreteHandler(s)_, the Handler's implementation(s) for processing the request that is responsible for.
 * The _Client_, submits the request to the first handler on the chain.
 
-```
+<pre>
 +--------+ creates  +-------------+
 | Client |.........>|<<int/abstr>>|
 +--------+          |   Handler   |
@@ -29,7 +29,7 @@ At the Chain of Responsibility the following components are participating:
     |ConcreteHandler1|           |ConcreteHandlerN|
     +----------------+           +----------------+
                       N Handlers
-```
+</pre>
 
 ### Test case
 ----
@@ -53,10 +53,10 @@ are implemented and propagate the request to the next handler. At Java 8, the ha
 (Function<T, T>), whereas the lambdas chaining is achieved natively via the default method andThen(...) of
 the Function interface.
 
-```
+<pre>
 +--------+ creates   +--------------+ <<andThen>> ... +--------------+
 | Client |.........> |Function<T, T>|.................|Function<T, T>|
 +--------+           |   lambda1    |                 |   lambdaN    |
                      +--------------+                 +--------------+
                                       N Handlers
-```
+</pre>
