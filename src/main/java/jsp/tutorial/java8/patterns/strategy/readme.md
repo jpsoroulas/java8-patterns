@@ -1,7 +1,6 @@
-### Strategy Pattern
+## Strategy Pattern
 
-----
-#### Description
+### Description
 ----
 
 The Strategy pattern is one of the behavioral design patterns. It is used to define a family of algorithms,
@@ -31,8 +30,7 @@ At the Strategy pattern the following components are participating:
                                                              +--------------------+
 ```
 
-----
-#### Test case
+### Test case
 ----
 
 In our scenario, there is an employer that is going to hire some people, the candidates, for a job position.
@@ -49,8 +47,7 @@ Adapting our scenario to the Strategy pattern results to the following component
 * ConcreteStartegy1   --->   DegreeRelevantHiringStrategy ('relevant degree' hiring strategy)
 * ConcreteStartegy2   --->   GradeHiringStrategy ('grade based' hiring strategy)
 
-----
-#### Discussion
+### Discussion
 ----
 
 The Strategy pattern implementation using lambdas differs from the old approach in how the various strategies

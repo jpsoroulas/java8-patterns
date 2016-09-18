@@ -1,7 +1,6 @@
-### Template Method pattern
+## Template Method pattern
 
-----
-#### Description
+### Description
 ----
 
 The Template Method Pattern is a behavior design patterns, it provides a template or a structure of an algorithm,
@@ -36,8 +35,7 @@ The template class can have some default implementations
 
 ```
 
-----
-#### Test case
+### Test case
 ----
 
 In our scenario, assume that a company is going to hire some people for various job positions.
@@ -51,8 +49,7 @@ Adapting our scenario to the Strategy pattern results to the following component
 * ConcreteTemplate1   --->   EngineerEvaluationProcess (evaluation process for Engineers)
 * ConcreteTemplate2   --->   ManagerEvaluationProcess (evaluation process for Managers)
 
-----
-#### Discussion
+### Discussion
 ----
 
 The Template Method pattern implementation using lambdas differs from the old approach that no subclasses are used.

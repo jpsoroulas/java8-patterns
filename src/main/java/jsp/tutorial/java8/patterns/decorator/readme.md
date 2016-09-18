@@ -1,7 +1,6 @@
-### Decorator pattern
+## Decorator pattern
 
-----
-#### Description
+### Description
 ----
 
 The Decorator pattern is one of the structural design patterns. It is used to dynamically attach additional behavior
@@ -48,8 +47,7 @@ At the Decorator pattern the following components are participating:
                              N implementations
 ```
 
-----
-#### Test case
+### Test case
 ----
 
 In our scenario, suppose that a company builds web filters to restrict the internet access of its employees.
@@ -62,8 +60,7 @@ Adapting our scenario to the Decorator pattern results to the following componen
 * ConcreteDecorator1   --->   WebMailsFilter
 * ConcreteDecorator2   --->   NewsSitesFilter
 
-----
-#### Discussion
+### Discussion
 ----
 
 The Decorator pattern implementation using lambdas differs from the old approach in how the component and the decorators

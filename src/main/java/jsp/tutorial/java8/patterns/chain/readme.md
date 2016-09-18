@@ -1,7 +1,6 @@
-### Chain of Responsibility pattern
+## Chain of Responsibility pattern
 
-----
-#### Description
+### Description
 ----
 
 The Chain of Responsibility pattern is a behavior pattern in which a group of objects is chained together
@@ -35,8 +34,7 @@ At the Chain of Responsibility the following components are participating:
                       N Handlers
 ```
 
-----
-#### Test case
+### Test case
 ----
 
 In our scenario, suppose that a software company offers three levels of help desk support with the following order:
@@ -50,8 +48,7 @@ Adapting our scenario to the Chain of Responsibility pattern results to the foll
 * ConcreteHandler2   --->   SecondLevelHDSupport
 * ConcreteHandler3   --->   ThirdLevelHDSupport
 
-----
-#### Discussion
+### Discussion
 ----
 
 The Chain of Responsibility implementation using lambdas differs from the old approach in how the various handlers

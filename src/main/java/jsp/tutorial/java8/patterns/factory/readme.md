@@ -1,7 +1,6 @@
-### Factory pattern
+## Factory pattern
 
-----
-#### Description
+### Description
 ----
 
 The Factory pattern is one of the creational design patterns. The factory design pattern lets you create objects without
@@ -32,8 +31,7 @@ At the Factory pattern the following components are participating:
                                              +--------+
 ```
 
-----
-#### Test case
+### Test case
 ----
 
 In our scenario, suppose that there is a company that constructs two computer models, the 'home' and the 'server' model.
@@ -47,8 +45,7 @@ Adapting our scenario to the Factory pattern results to the following components
 * Family object 1                      --->   HomeComputer
 * Family object 2                      --->   ServerComputer
 
-----
-#### Discussion
+### Discussion
 ----
 
 The Factory pattern implementation using lambdas differs from the old approach that the family objects' builders
