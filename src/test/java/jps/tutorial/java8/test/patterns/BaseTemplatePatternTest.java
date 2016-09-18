@@ -64,7 +64,8 @@ public class BaseTemplatePatternTest extends TestSupport {
 	protected List<Pair<String, Integer>> calculateScores(List<Candidate> candidates, IEvaluationProcess process) {
 		/* Create a list of pair(candidate name, score) sorted by the score */
 		List<Pair<String, Integer>> scores = candidates.stream()
-				/* Map each candidate to a pair of candidate name and the score that results from the evaluation process*/
+				/* Map each candidate to a pair of candidate name and the score that results
+				 * from the evaluation process */
 				.map(c -> {
 					return Pair.of(
 							c.getName(),

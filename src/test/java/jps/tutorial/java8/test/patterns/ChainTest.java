@@ -50,7 +50,8 @@ public class ChainTest extends TestSupport {
 		//				new SecondLevelHDSupport(
 		//						new ThirdLevelHDSupport()));
 
-		/* Create the 'old-way' support levels chain using streams, creating the handlers references explicitly, convenient for many handlers */
+		/* Create the 'old-way' support levels chain using streams, creating the handlers references explicitly,
+		 * convenient for many handlers */
 		//		supportChain = Arrays
 		//				.stream(new HDSupport[] {new FirstLevelHDSupport(), new SecondLevelHDSupport(), new ThirdLevelHDSupport()})
 		//				.reduce((f, n) -> { /* reduce to the handler that chains all handlers together */
@@ -62,7 +63,8 @@ public class ChainTest extends TestSupport {
 		//					return f;
 		//				}).get();
 
-		/* Another way to create the 'old-way' support levels chain using streams, using constructor references, convenient for many handlers*/
+		/* Another way to create the 'old-way' support levels chain using streams, using constructor references,
+		 * convenient for many handlers */
 		supportChain = Stream.<Supplier<HDSupport>> of(
 				FirstLevelHDSupport::new,
 				SecondLevelHDSupport::new,
@@ -94,10 +96,11 @@ public class ChainTest extends TestSupport {
 		 * when the support request is not handled */
 		Function<SupportRequest, SupportRequest> hanldedChecker =
 				(r) -> {
-					if(r.isHandled()) { /* If the support request is finally handled, just return the request */
+					/* If the support request is finally handled, just return the request */
+					if(r.isHandled()) {
 						return r;
-					}
-					throw new UnsupportedRequestException(r.getType().toString()); /* Otherwise, throw an exception */
+					}/* Otherwise, throw an exception */
+					throw new UnsupportedRequestException(r.getType().toString());
 				};
 
 		/* Create the support levels chain with the 'lambda-way'*/
