@@ -46,22 +46,22 @@ public class ChainTest extends TestSupport {
   public void setup() {
     /* ------------ The 'old-way' ------------ */
     //		/* Create the 'old way' support levels chain without streams */
-    //		supportChain = new FirstLevelHDSupport(
-    //				new SecondLevelHDSupport(
-    //						new ThirdLevelHDSupport()));
+    //    supportChain = new FirstLevelHDSupport(
+    //        new SecondLevelHDSupport(
+    //            new ThirdLevelHDSupport()));
 
     /* Create the 'old-way' support levels chain using streams, creating the handlers references explicitly,
      * convenient for many handlers */
-    //		supportChain = Arrays
-    //				.stream(new HDSupport[] {new FirstLevelHDSupport(), new SecondLevelHDSupport(), new ThirdLevelHDSupport()})
-    //				.reduce((f, n) -> { /* reduce to the handler that chains all handlers together */
-    //					HDSupport target = f.getNextSupport();
-    //					if(null == target) {
-    //						target = f;
-    //					}
-    //					target.setNextSupport(n);
-    //					return f;
-    //				}).get();
+    //    supportChain = Arrays
+    //        .stream(new HDSupport[] {new FirstLevelHDSupport(), new SecondLevelHDSupport(), new ThirdLevelHDSupport()})
+    //        .reduce((f, n) -> { /* reduce to the handler that chains all handlers together */
+    //          HDSupport target = f.getNextSupport();
+    //          if(null == target) {
+    //            target = f;
+    //          }
+    //          target.setNextSupport(n);
+    //          return f;
+    //        }).get();
 
     /* Another way to create the 'old-way' support levels chain using streams, using constructor references,
      * convenient for many handlers */
@@ -110,10 +110,10 @@ public class ChainTest extends TestSupport {
         handlerWrapper.apply(r -> HDSupportHandlerAlgorithms.thirdLevelSupport(r)),
         hanldedChecker)
         /* reduce to the handler that chains all handlers together */
-        //				.reduce((f, n) -> {
-        //					return f.andThen(n);
-        //				})
-        //				.orElseGet(() -> Function.identity());
+        //        .reduce((f, n) -> {
+        //          return f.andThen(n);
+        //        })
+        //        .orElseGet(() -> Function.identity());
         /* A more elegant way to reduce */
         .reduce(Function.identity(), Function::andThen);
 
