@@ -1,5 +1,9 @@
 ### Chain of Responsibility pattern
 
+----
+#### Description
+----
+
 The Chain of Responsibility pattern is a behavior pattern in which a group of objects is chained together
 and is responsible to handle a request. The client pass the request to the chain of objects; If an object
 in the chain can process the particular request, it does so and returns the corresponding response.
@@ -31,6 +35,10 @@ At the Chain of Responsibility the following components are participating:
                       N Handlers
 ```
 
+----
+#### Test case
+----
+
 In our scenario, suppose that a software company offers three levels of help desk support with the following order:
 the first level, the second level and the third level support. A support level will try to handle the request, if
 all the lower-ordered support levels fail.
@@ -42,6 +50,9 @@ Adapting our scenario to the Chain of Responsibility pattern results to the foll
 * ConcreteHandler2   --->   SecondLevelHDSupport
 * ConcreteHandler3   --->   ThirdLevelHDSupport
 
+----
+#### Discussion
+----
 
 The Chain of Responsibility implementation using lambdas differs from the old approach in how the various handlers
 are implemented and propagate the request to the next handler. At Java 8, the handlers implementation can be lambdas

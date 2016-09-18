@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<suite name="java revisit" verbose="1">
-    <test name="Test java revist" preserve-order="true">
+<suite name="java 8 deisgn patterns" verbose="1">
+    <test name="java 8 deisgn patterns" preserve-order="true">
         <packages>
       		<package name="jsp.tutorial.java8.test.patterns" />
       		<package name="jsp.tutorial.java8.test.streams" />

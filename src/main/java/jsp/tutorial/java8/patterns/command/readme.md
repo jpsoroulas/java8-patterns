@@ -1,5 +1,9 @@
 ### Command pattern
 
+----
+#### Description
+----
+
 The Command pattern is one of the behavioral design patterns and it is used to implement loose coupling
 between the _invoker_ and the _receiver_ of a request. The invoker is the object that issues a request
 on behalf of the client. The request is received by an implementation of the request
@@ -42,6 +46,10 @@ the appropriate command and execute the invoker's method to issue the request at
                                           +-----------------+
 ```
 
+----
+#### Test case
+----
+
 In our scenario, suppose that a company has to inform the candidates of a job position about the evaluation
 results. A candidate is informed either via an email or a SMS message depending on candidate's preference.
 The message dispatching is performed by the company's secretaries which coordinated by the secretarial services
@@ -56,6 +64,9 @@ Adapting our scenario to the Command pattern results to the following components
 * Receiver1          --->   EmailDispatcher (the receiver for sending an email)
 * Receiver2          --->   SMSDispatcher (the receiver for sending a SMS)
 
+----
+#### Discussion
+----
 
 The Command pattern implementation using lambdas differs from the old approach in how the various commands
 are implemented. At the old approach, the commands are implemented via classes (or anonymous classes) whereas

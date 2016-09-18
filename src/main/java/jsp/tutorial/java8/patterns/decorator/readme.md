@@ -1,5 +1,9 @@
 ### Decorator pattern
 
+----
+#### Description
+----
+
 The Decorator pattern is one of the structural design patterns. It is used to dynamically attach additional behavior
 to an object and provides a flexible alternative to subclassing for extending functionality.
 It is used to dynamically extend the functionality of an object without having to change the original class
@@ -44,6 +48,10 @@ At the Decorator pattern the following components are participating:
                              N implementations
 ```
 
+----
+#### Test case
+----
+
 In our scenario, suppose that a company builds web filters to restrict the internet access of its employees.
 The applied web filters to an employee depends on the employee's rank. For example, the lower employee's rank
 the higher internet access restriction.
@@ -54,6 +62,9 @@ Adapting our scenario to the Decorator pattern results to the following componen
 * ConcreteDecorator1   --->   WebMailsFilter
 * ConcreteDecorator2   --->   NewsSitesFilter
 
+----
+#### Discussion
+----
 
 The Decorator pattern implementation using lambdas differs from the old approach in how the component and the decorators
 are implemented. At Java 8, the component/decorators implementation can be lambdas (Function<T, T>), whereas the

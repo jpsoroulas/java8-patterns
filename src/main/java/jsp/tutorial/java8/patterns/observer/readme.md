@@ -1,5 +1,9 @@
 ### Observer pattern
 
+----
+#### Description
+----
+
 The Observer pattern is one of the behavioral design patterns. This pattern defines an one-to-many dependency
 between objects so that when the 'one' object changes state, all its dependents, the 'many', are get notified.
 The 'one' part of the dependency is the _subject_, whereas the 'many' part is the _observers_.
@@ -38,6 +42,10 @@ subject to receive its updates.
   +---------------------+
 ```
 
+----
+#### Test case
+----
+
 In our scenario, suppose that a company has a system notification about the new internal job opportunities.
 The system holds a list with company's departments which notified when a new internal job is available.
 Each department implements its own policy with respect to new job positions. For example, the engineering
@@ -51,6 +59,9 @@ Adapting our scenario to the Observer pattern results to the following component
 * ConcreteObserver2   --->   SalesDepartment (the company's sales department)
 * ConcreteObserver3   --->   LogisticsDepartment (the company's logistics department)
 
+----
+#### Discussion
+----
 
 The Observer pattern implementation using lambdas differs from the old approach in how the various observers
 are implemented. At the old approach, the observers are implemented via classes (or anonymous classes) whereas
