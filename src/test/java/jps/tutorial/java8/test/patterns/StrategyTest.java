@@ -47,19 +47,34 @@ public class StrategyTest extends TestSupport {
 	}
 
 	/**
-	 * Test the {@link DegreeRelevantHiringStrategy}
+	 * Tests the 'old-way' {@link DegreeRelevantHiringStrategy}.
 	 */
 	public void degreeRelevantHiringStrategy() {
 		DegreeField field = DegreeField.ENGINEERING;
-		/* ------------ The 'old-way' ------------ */
-		/* Create an 'ENGINEERING degree relevant hiring strategy' */
-		//		HiringStrategy strategy = new DegreeRelevantHiringStrategy(DegreeField.ENGINEERING);
+		/* Create an 'ENGINEERING degree relevant hiring strategy' with the 'old-way' */
+		HiringStrategy strategy = new DegreeRelevantHiringStrategy(field);
+		/* Do the test */
+		doDegreeRelevantHiringStrategy(strategy, field);
+	}
 
-		/* ------------ The 'lambda-way' ------------*/
+	/**
+	 * Tests the 'lambda-way' {@link DegreeRelevantHiringStrategy}.
+	 */
+	public void degreeRelevantHiringStrategyLambda() {
+		DegreeField field = DegreeField.ENGINEERING;
+		/* Create an 'ENGINEERING degree relevant hiring strategy' with the 'lambda-way' */
 		HiringStrategy strategy = candidate -> {
 			// Call the generic degree relevant hiring algorithm
 			return StrategyAlgorithms.degree(candidate, field);
 		};
+		/* Do the test */
+		doDegreeRelevantHiringStrategy(strategy, field);
+	}
+
+	/**
+	 * The actual test for a {@link DegreeRelevantHiringStrategy}.
+	 */
+	private void doDegreeRelevantHiringStrategy(HiringStrategy strategy, DegreeField field) {
 		// Set the hiring strategy to the employer
 		employer.setHiringStrategy(strategy);
 		/* Build the candidates */
@@ -77,19 +92,34 @@ public class StrategyTest extends TestSupport {
 	}
 
 	/**
-	 * Test the {@link GradeHiringStrategy}
+	 * Tests the 'old-way' {@link GradeHiringStrategy}.
 	 */
 	public void gradeHiringStrategy() {
 		final int threshold = 8;
-		/* ------------ The old way: ------------ */
-		/* Create a 'grade' hiring strategy */
-		//		HiringStrategy strategy = new GradeHiringStrategy(gradeThreshold);
+		/* Create a 'grade' hiring strategy with the 'old-way'*/
+		HiringStrategy strategy = new GradeHiringStrategy(threshold);
+		/* Do the test */
+		doGradeHiringStrategy(strategy, threshold);
+	}
 
-		/* ------------ The lambda way ------------*/
+	/**
+	 * Tests the 'lambda-way' {@link GradeHiringStrategy}.
+	 */
+	public void gradeHiringStrategylambda() {
+		final int threshold = 8;
+		/* Create a 'grade' hiring strategy with the 'lambda-way'*/
 		HiringStrategy strategy = candidate -> {
 			// Call the generic grade hiring algorithm
 			return StrategyAlgorithms.grade(candidate, threshold);
 		};
+		/* Do the test */
+		doGradeHiringStrategy(strategy, threshold);
+	}
+
+	/**
+	 * The actual test for a {@link GradeHiringStrategy}.
+	 */
+	public void doGradeHiringStrategy(HiringStrategy strategy, int threshold) {
 		// Set the hiring strategy to the employer
 		employer.setHiringStrategy(strategy);
 		/* Build the candidates */
