@@ -1,8 +1,5 @@
 ## Decorator pattern
 
-### Description
-----
-
 The Decorator pattern is one of the structural design patterns. It is used to dynamically attach additional behavior
 to an object and provides a flexible alternative to subclassing for extending functionality.
 It is used to dynamically extend the functionality of an object without having to change the original class

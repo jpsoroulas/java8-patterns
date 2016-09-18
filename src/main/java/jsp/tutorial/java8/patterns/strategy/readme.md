@@ -1,8 +1,5 @@
 ## Strategy Pattern
 
-### Description
-----
-
 The Strategy pattern is one of the behavioral design patterns. It is used to define a family of algorithms,
 encapsulate each one behind a common programming interface, and make them interchangeable dynamically.
 This pattern lets the algorithm vary independently from clients that use it. It converts the generalization

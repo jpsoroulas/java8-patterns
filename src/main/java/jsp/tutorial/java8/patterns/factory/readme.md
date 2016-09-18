@@ -1,8 +1,5 @@
 ## Factory pattern
 
-### Description
-----
-
 The Factory pattern is one of the creational design patterns. The factory design pattern lets you create objects without
 exposing the instantiation logic to the client. The created objects share a common interface used by the client to
 interact with them. That is, the _factory_ creates one of a _family of objects_ and the client is not aware of

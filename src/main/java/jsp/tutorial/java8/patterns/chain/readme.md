@@ -1,8 +1,5 @@
 ## Chain of Responsibility pattern
 
-### Description
-----
-
 The Chain of Responsibility pattern is a behavior pattern in which a group of objects is chained together
 and is responsible to handle a request. The client pass the request to the chain of objects; If an object
 in the chain can process the particular request, it does so and returns the corresponding response.

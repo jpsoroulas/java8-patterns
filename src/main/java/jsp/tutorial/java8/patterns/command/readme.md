@@ -1,8 +1,5 @@
 ## Command pattern
 
-### Description
-----
-
 The Command pattern is one of the behavioral design patterns and it is used to implement loose coupling
 between the _invoker_ and the _receiver_ of a request. The invoker is the object that issues a request
 on behalf of the client. The request is received by an implementation of the request
