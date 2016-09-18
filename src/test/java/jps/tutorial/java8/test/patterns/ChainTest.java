@@ -117,7 +117,7 @@ public class ChainTest extends TestSupport {
 	}
 
 	/**
-	 * Tests a resolved 'old-way' support request.
+	 * Tests a support request resolved by an 'old-way' support chain.
 	 */
 	public void submitResolvedSupportRequest() {
 		/* This is the client that submits the support requests to support levels chain */
@@ -129,7 +129,7 @@ public class ChainTest extends TestSupport {
 	}
 
 	/**
-	 * Tests an unresolved 'old-way' support request.
+	 * Tests a support request that can not resolved by an 'old-way' support chain.
 	 */
 	@Test(expectedExceptions = {UnsupportedRequestException.class})
 	public void submitUnresolvedSupportRequest() {
@@ -141,7 +141,7 @@ public class ChainTest extends TestSupport {
 	}
 
 	/**
-	 * Tests a resolved 'lambda-way' support request.
+	 * Tests a support request resolved by a 'lambda-way' support chain.
 	 */
 	public void submitResolvedSupportRequestLambda() {
 		/* This is the client that submits the support requests to support levels chain*/
@@ -154,7 +154,7 @@ public class ChainTest extends TestSupport {
 	}
 
 	/**
-	 * Tests an unresolved 'lambda-way' support request.
+	 * Tests a support request that can not resolved by a 'lambda-way' support chain.
 	 */
 	@Test(expectedExceptions = {UnsupportedRequestException.class})
 	public void submitUnresolvedSupportRequestLambda() {
