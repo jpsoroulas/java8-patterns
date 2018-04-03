@@ -1,5 +1,7 @@
 package jsp.tutorial.java8.patterns.factory;
 
+import java.util.Optional;
+
 import jsp.tutorial.java8.patterns.factory.ComputerSpecs.ComputerSpecsBuilder;
 
 /**
@@ -14,7 +16,7 @@ public class HomeComputer extends Computer {
   }
 
   public HomeComputer(ComputerSpecs spec) {
-    super(spec != null ? spec : ComputerSpecsBuilder.buildStandardSpec());
+    super(Optional.ofNullable(spec).orElseGet(ComputerSpecsBuilder::buildStandardSpec));
   }
 
 }
