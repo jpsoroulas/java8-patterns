@@ -1,5 +1,6 @@
 package jps.tutorial.java8.test.patterns;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.testng.annotations.Test;
 import jps.tutorial.java8.test.DataUtils;
 import jps.tutorial.java8.test.TestSupport;
 import jsp.tutorial.java8.patterns.Candidate;
+import jsp.tutorial.java8.patterns.Degree;
 import jsp.tutorial.java8.patterns.Degree.DegreeField;
 import jsp.tutorial.java8.patterns.Employer;
 import jsp.tutorial.java8.patterns.strategy.DegreeRelevantHiringStrategy;
@@ -40,7 +42,7 @@ public class StrategyTest extends TestSupport {
     List<Candidate> candidates = DataUtils.buildCandidates(100);
     // Find the number of hired candidates
     long hired = candidates.stream()
-        .filter(c -> employer.hire(c))
+        .filter(employer::hire)
         .count();
     /* Test the results */
     Assert.assertEquals(hired, 0, "The employer has no authorization for hiring");
@@ -62,11 +64,11 @@ public class StrategyTest extends TestSupport {
    */
   public void degreeRelevantHiringStrategyLambda() {
     DegreeField field = DegreeField.ENGINEERING;
-    /* Create an 'ENGINEERING degree relevant hiring strategy' with the 'lambda-way' */
-    HiringStrategy strategy = candidate -> {
-      // Call the generic degree relevant hiring algorithm
-      return StrategyAlgorithms.degree(candidate, field);
-    };
+    /*
+     * Create an 'ENGINEERING degree relevant hiring strategy' with the 'lambda-way'
+     * The lambda calls the generic degree relevant hiring algorithm
+     */
+    HiringStrategy strategy = candidate -> StrategyAlgorithms.degree(candidate, field);
     /* Do the test */
     doDegreeRelevantHiringStrategy(strategy, field);
   }
@@ -82,12 +84,15 @@ public class StrategyTest extends TestSupport {
     /* Find the expected number of the hired candidates by counting the ones that
      * has ENGINEERING degree field */
     long expectedHired = candidates.stream()
-        .filter(c -> c.getDegrees().stream().anyMatch(d -> field == d.getField()))
+        .map(Candidate::getDegrees)
+        .flatMap(Collection::stream)
+        .map(Degree::getField)
+        .filter(field::equals)
         .count();
     /* Find the actual number of the hired candidates by counting the ones that
      * hired by applying the degree relevant hiring strategy */
     long actualHired = candidates.stream()
-        .filter(c -> employer.hire(c))
+        .filter(employer::hire)
         .count();
     /* Test the results */
     Assert.assertEquals(actualHired, expectedHired, "Unexpected number of hired people");
@@ -121,7 +126,7 @@ public class StrategyTest extends TestSupport {
   /**
    * The actual test for a {@link GradeHiringStrategy}.
    */
-  public void doGradeHiringStrategy(HiringStrategy strategy, int threshold) {
+  private void doGradeHiringStrategy(HiringStrategy strategy, int threshold) {
     // Set the hiring strategy to the employer
     employer.setHiringStrategy(strategy);
     /* Build the candidates */
@@ -129,12 +134,15 @@ public class StrategyTest extends TestSupport {
     /* Find the expected number of the hired candidates by counting the ones that
      * has grade greater or equals to the threshold */
     long expectedHired = candidates.stream()
-        .filter(c -> c.getDegrees().stream().anyMatch(d -> d.getGrade() >= threshold))
+        .map(Candidate::getDegrees)
+        .flatMap(Collection::stream)
+        .mapToInt(Degree::getGrade)
+        .filter(grade -> grade >= threshold)
         .count();
     /* Find the actual number of the hired candidates by counting the ones that
      * hired by applying the grade hiring strategy */
     long actualHired = candidates.stream()
-        .filter(c -> employer.hire(c))
+        .filter(employer::hire)
         .count();
     /* Test the results */
     Assert.assertEquals(actualHired, expectedHired, "Unexpected number of hired people");
