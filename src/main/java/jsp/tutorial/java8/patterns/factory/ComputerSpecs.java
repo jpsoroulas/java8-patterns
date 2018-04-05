@@ -61,7 +61,8 @@ public class ComputerSpecs {
 	@Override
 	public boolean equals(Object other) {
 		return Optional.ofNullable(other)
-				.filter(ComputerSpecs.class::isInstance)
+				//				.filter(ComputerSpecs.class::isInstance)
+				.filter(o -> this.getClass() == o.getClass()) // More safe
 				.map(Object::hashCode)
 				.map(Integer.valueOf(hashCode())::equals)
 				.orElse(Boolean.FALSE);
