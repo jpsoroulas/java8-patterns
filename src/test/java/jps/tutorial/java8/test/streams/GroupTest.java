@@ -58,7 +58,7 @@ public class GroupTest extends TestSupport {
 									DataUtils.buildDegreeByField(DegreeField.CHEMISTRY)
 							};
 						})
-				.flatMap(a -> Arrays.stream(a)) /* Flatten the array */
+				.flatMap(Arrays::stream) /* Flatten the array */
 				.collect(Collectors.groupingBy(Degree::getField)); /* Group by degree field */
 		//        .forEach((k, v) -> LOG.info("key {}, value {}", k, v));
 		/* Check the groups size */

@@ -27,9 +27,11 @@ public class Employer {
 	}
 
 	public boolean hire(Candidate candidate) {
-		/* If the hiringStrategy is set the 'mapper' at the map is called which determines the
-		 * result of the method call. Otherwise, return false. The 'orElseThrow can be used' according
+		/* If the hiringStrategy is set, the 'mapper' at the map is called which determines the
+		 * result of the method call. Otherwise, returns false. The 'orElseThrow can be used' according
 		 * the requirements */
-		return hiringStrategy.map(s -> s.hire(candidate)).orElse(Boolean.FALSE);
+		return hiringStrategy
+				.map(s -> s.hire(candidate))
+				.orElse(Boolean.FALSE);
 	}
 }
