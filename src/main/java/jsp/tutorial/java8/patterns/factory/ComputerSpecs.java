@@ -1,5 +1,8 @@
 package jsp.tutorial.java8.patterns.factory;
 
+import java.util.Optional;
+import java.util.stream.IntStream;
+
 import jsp.tutorial.java8.patterns.factory.Computer.ComputerModel;
 
 /**
@@ -52,6 +55,23 @@ public class ComputerSpecs {
   @Override
   public String toString() {
     return "ComputerSpec [cores=" + cores + ", disks=" + disks + ", memory=" + memory + "]";
+  }
+
+  @Override
+  public int hashCode()
+  {
+    return IntStream.of(cores, disks, (int)(memory ^ (memory >>> 32)))
+        .reduce(1, (hashcode, field) -> 37 * hashcode + field);
+  }
+
+  @Override
+  public boolean equals(Object other)
+  {
+    return Optional.ofNullable(other)
+      .filter(ComputerSpecs.class::isInstance)
+      .map(Object::hashCode)
+      .map(Integer.valueOf(hashCode())::equals)
+      .orElse(Boolean.FALSE);
   }
 
   /**

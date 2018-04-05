@@ -33,12 +33,8 @@ public class FactoryTest extends TestSupport {
     ComputerSpecs spec = computer.getSpecs();
     ComputerSpecs sdspec = ComputerSpecsBuilder.buildStandardSpec();
     /* Test the results */
-    Assert.assertEquals(spec.getCores(), sdspec.getCores(),
-        "Unexpected number of cores");
-    Assert.assertEquals(spec.getDisks(), sdspec.getDisks(),
-        "Unexpected number of disks");
-    Assert.assertEquals(spec.getMemory(), sdspec.getMemory(),
-        "Unexpected memory size");
+    Assert.assertEquals(spec, sdspec,
+        "Unexpected specs");
   }
 
   /**
@@ -50,12 +46,8 @@ public class FactoryTest extends TestSupport {
     ComputerSpecs spec = computer.getSpecs();
     ComputerSpecs exspec = ComputerSpecsBuilder.buildExtendedSpec();
     /* Test the results */
-    Assert.assertEquals(spec.getCores(), exspec.getCores(),
-        "Unexpected number of cores");
-    Assert.assertEquals(spec.getDisks(), exspec.getDisks(),
-        "Unexpected number of disks");
-    Assert.assertEquals(spec.getMemory(), exspec.getMemory(),
-        "Unexpected memory size");
+    Assert.assertEquals(spec, exspec,
+        "Unexpected specs");
   }
 
 }
