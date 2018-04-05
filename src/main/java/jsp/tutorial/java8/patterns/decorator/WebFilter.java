@@ -9,12 +9,12 @@ import java.util.List;
  */
 public interface WebFilter {
 
-  /**
-   * Filter the specified URLs
-   *
-   * @param urls the URLs
-   * @return the filtered URLs.
-   */
-  public List<String> filter(List<String> urls);
+	/**
+	 * Filter the specified URLs
+	 *
+	 * @param urls the URLs
+	 * @return the filtered URLs.
+	 */
+	public List<String> filter(List<String> urls);
 
 }

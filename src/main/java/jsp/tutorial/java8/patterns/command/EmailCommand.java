@@ -7,18 +7,18 @@ package jsp.tutorial.java8.patterns.command;
  */
 public class EmailCommand implements Runnable {
 
-  private MessageDispather dispatcher;
+	private MessageDispather dispatcher;
 
-  private MessageData messageData;
+	private MessageData messageData;
 
-  public EmailCommand(MessageDispather dispatcher, MessageData messageData) {
-    this.dispatcher = dispatcher;
-    this.messageData = messageData;
-  }
+	public EmailCommand(MessageDispather dispatcher, MessageData messageData) {
+		this.dispatcher = dispatcher;
+		this.messageData = messageData;
+	}
 
-  @Override
-  public void run() {
-    dispatcher.send(messageData.getMessage(), messageData.getRecipients());
-  }
+	@Override
+	public void run() {
+		dispatcher.send(messageData.getMessage(), messageData.getRecipients());
+	}
 
 }

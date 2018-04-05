@@ -7,16 +7,16 @@ package jsp.tutorial.java8.patterns.chain;
  */
 public class SecondLevelHDSupport extends HDSupport {
 
-  public SecondLevelHDSupport() {
-  }
+	public SecondLevelHDSupport() {
+	}
 
-  public SecondLevelHDSupport(HDSupport nextSupport) {
-    super(nextSupport);
-  }
+	public SecondLevelHDSupport(HDSupport nextSupport) {
+		super(nextSupport);
+	}
 
-  @Override
-  public SupportRequest doHandle(SupportRequest request) {
-    return HDSupportHandlerAlgorithms.secondLevelSupport(request);
-  }
+	@Override
+	public SupportRequest doHandle(SupportRequest request) {
+		return HDSupportHandlerAlgorithms.secondLevelSupport(request);
+	}
 
 }

@@ -9,12 +9,12 @@ import jsp.tutorial.java8.patterns.Candidate;
  */
 public interface HiringStrategy {
 
-  /**
-   * Decides whether a {@link Candidate} should be hired or not.
-   *
-   * @param candidate the candidate
-   * @return true if the candidate is hired, otherwise false.
-   */
-  boolean hire(Candidate candidate);
+	/**
+	 * Decides whether a {@link Candidate} should be hired or not.
+	 *
+	 * @param candidate the candidate
+	 * @return true if the candidate is hired, otherwise false.
+	 */
+	boolean hire(Candidate candidate);
 
 }

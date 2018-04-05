@@ -13,12 +13,12 @@ import jsp.tutorial.java8.patterns.JobInfo;
  */
 public class EngineeringDepartment implements JobListener {
 
-  private static final Logger LOG = LoggerFactory.getLogger(EngineeringDepartment.class);
+	private static final Logger LOG = LoggerFactory.getLogger(EngineeringDepartment.class);
 
-  @Override
-  public void onNewJobAvailable(JobInfo job) {
-    LOG.info("New job notification received by Engineering department");
-    JobPorcessingAlgorithms.engineering(job);
-  }
+	@Override
+	public void onNewJobAvailable(JobInfo job) {
+		LOG.info("New job notification received by Engineering department");
+		JobPorcessingAlgorithms.engineering(job);
+	}
 
 }

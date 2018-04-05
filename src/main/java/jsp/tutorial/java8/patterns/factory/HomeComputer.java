@@ -11,12 +11,13 @@ import jsp.tutorial.java8.patterns.factory.ComputerSpecs.ComputerSpecsBuilder;
  */
 public class HomeComputer extends Computer {
 
-  public HomeComputer() {
-    super(ComputerSpecsBuilder.buildStandardSpec());
-  }
+	public HomeComputer() {
+		super(ComputerSpecsBuilder.buildStandardSpec());
+	}
 
-  public HomeComputer(ComputerSpecs spec) {
-    super(Optional.ofNullable(spec).orElseGet(ComputerSpecsBuilder::buildStandardSpec));
-  }
+	public HomeComputer(ComputerSpecs spec) {
+		super(Optional.ofNullable(spec)
+				.orElseGet(ComputerSpecsBuilder::buildStandardSpec));
+	}
 
 }

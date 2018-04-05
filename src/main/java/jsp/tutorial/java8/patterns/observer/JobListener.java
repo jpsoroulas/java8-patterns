@@ -10,11 +10,11 @@ import jsp.tutorial.java8.patterns.JobInfo;
  */
 public interface JobListener {
 
-  /**
-   * Invoked when a new job is available with the specific information.
-   *
-   * @param info the job's information
-   */
-  public void onNewJobAvailable(JobInfo info);
+	/**
+	 * Invoked when a new job is available with the specific information.
+	 *
+	 * @param info the job's information
+	 */
+	public void onNewJobAvailable(JobInfo info);
 
 }

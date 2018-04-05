@@ -7,45 +7,52 @@ package jsp.tutorial.java8.patterns.chain;
  */
 public class SupportRequest {
 
-  /**
-   * Some request types (used by the various support levels to decide
-   * whether can handle a request or not).
-   */
-  public enum RequestType {
-    LEVEL1, LEVEL2, LEVEL3, LEVEL4
-  }
+	/**
+	 * Some request types (used by the various support levels to decide
+	 * whether can handle a request or not).
+	 */
+	public enum RequestType {
+		LEVEL1, LEVEL2, LEVEL3, LEVEL4
+	}
 
-  private RequestType type;
+	private RequestType type;
 
-  private boolean handled = false;
+	private boolean handled = false;
 
-  public SupportRequest() {
-    this.type = RequestType.LEVEL1;
-  }
+	public SupportRequest() {
+		this.type = RequestType.LEVEL1;
+	}
 
-  public SupportRequest(RequestType type) {
-    this.type = type;
-  }
+	public SupportRequest(RequestType type) {
+		this.type = type;
+	}
 
-  public boolean isHandled() {
-    return handled;
-  }
+	public boolean isHandled() {
+		return handled;
+	}
 
-  public void setHandled(boolean handled) {
-    this.handled = handled;
-  }
+	public void setHandled(boolean handled) {
+		this.handled = handled;
+	}
 
-  public RequestType getType() {
-    return type;
-  }
+	public RequestType getType() {
+		return type;
+	}
 
-  public void setType(RequestType type) {
-    this.type = type;
-  }
+	public void setType(RequestType type) {
+		this.type = type;
+	}
 
-  @Override
-  public String toString() {
-    return "SupportRequest [type=" + type + ", handled=" + handled + "]";
-  }
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder
+				.append("SupportRequest [type=")
+				.append(type)
+				.append(", handled=")
+				.append(handled)
+				.append("]");
+		return builder.toString();
+	}
 
 }

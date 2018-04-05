@@ -10,6 +10,6 @@ import jsp.tutorial.java8.patterns.Candidate;
  */
 public interface IEvaluationProcess {
 
-  int evaluate(Candidate candidate);
+	int evaluate(Candidate candidate);
 
 }

@@ -17,15 +17,16 @@ import jsp.tutorial.java8.patterns.VariousUtils;
  */
 public class SMSDispatcher extends MessageDispather {
 
-  private static final Logger LOG = LoggerFactory.getLogger(SMSDispatcher.class);
+	private static final Logger LOG = LoggerFactory.getLogger(SMSDispatcher.class);
 
-  public void doSend(String message, String... recipients) {
-    /* Some dummy implementation */
-    Arrays.stream(recipients).forEach(
-        recipient -> {
-          LOG.info("Sending SMS to {}, : {}", recipient, message);
-          VariousUtils.keepBusy(TimeUnit.MILLISECONDS, 10);
-        });
-  }
+	@Override
+	public void doSend(String message, String... recipients) {
+		/* Some dummy implementation */
+		Arrays.stream(recipients).forEach(
+				recipient -> {
+					LOG.info("Sending SMS to {}, : {}", recipient, message);
+					VariousUtils.keepBusy(TimeUnit.MILLISECONDS, 10);
+				});
+	}
 
 }

@@ -9,8 +9,8 @@ import jsp.tutorial.java8.patterns.Candidate;
  */
 public class ManagerEvaluationProcess extends EvaluationProcess {
 
-  @Override
-  protected int specialStep(Candidate candidate) {
-    return ProcessEvaluationAlgorithms.management(candidate);
-  }
+	@Override
+	protected int specialStep(Candidate candidate) {
+		return ProcessEvaluationAlgorithms.management(candidate);
+	}
 }
