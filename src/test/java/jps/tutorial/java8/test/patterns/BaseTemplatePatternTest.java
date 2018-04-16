@@ -3,6 +3,7 @@ package jps.tutorial.java8.test.patterns;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 
@@ -34,24 +35,31 @@ public class BaseTemplatePatternTest extends TestSupport {
 	 * @param process the evaluation process
 	 * @param specialEvaluation the special evaluation function depended on the job type
 	 */
+	/* PLEASE NOTE that the used algorithm is not the optimal and it may look naive on purpose,
+	 * since this code also targets to show java 8 lamda and streams features */
 	protected void evaluationProcess(IEvaluationProcess process, ToIntFunction<Candidate> specialEvaluation) {
 		/* Build the candidates */
 		List<Candidate> candidates = DataUtils.buildCandidates(50);
-		/* Calculate scores*/
+		/* Calculate scores */
 		List<Pair<String, Integer>> scores = calculateScores(candidates, process);
 
 		/* A mostly naive test to confirm that the specific evaluation algorithm is correctly applied.
 		 * just check if the total score is the sum of the common and the special evaluation algorithms */
 		Map<String, Candidate> cmap = candidates.stream()
 				/* Convert a candidate list to map for easy access. Assume that candidate name is unique */
-				.collect(Collectors.toMap(Candidate::getName, c -> c));
+				.collect(Collectors
+						.toMap(
+								Candidate::getName,
+								Function.identity()));
 
-		scores.stream().forEach(p -> {
-			Candidate c = cmap.get(p.getLeft()); /* Get the candidate by his name */
+		scores.stream().forEach(score -> {
+			Candidate candidate = cmap.get(score.getLeft()); /* Get the candidate by his name */
 			/* If Function and not ToIntFunction is used you can try the andThen(...) and compose methods*/
-			Integer expectedScore = ProcessEvaluationAlgorithms.common(c) + /* The common evaluation algorithm */
-					specialEvaluation.applyAsInt(c); /* Apply the special evaluation algorithm */
-			Assert.assertEquals(p.getRight(), expectedScore, "Unexpected score");
+			Integer expectedScore =
+					ProcessEvaluationAlgorithms.common(candidate) + /* The common evaluation algorithm */
+							specialEvaluation.applyAsInt(candidate); /* Apply the special evaluation algorithm */
+			Assert.assertEquals(score.getRight(), expectedScore,
+					"Unexpected score");
 		});
 	}
 
@@ -61,9 +69,13 @@ public class BaseTemplatePatternTest extends TestSupport {
 	 * @param process The evaluation process
 	 * @return the scores, a list of pairs (candidate name, score)
 	 */
+	/* PLEASE NOTE that the used algorithm is not the optimal and it may look naive on purpose,
+	 * since this code also targets to show java 8 lamda and streams features
+	 * (e.g. in this example we could simply return a Map with candidates and scores
+	 * and not a sorted list of Pair) */
 	protected List<Pair<String, Integer>> calculateScores(List<Candidate> candidates, IEvaluationProcess process) {
 		/* Create a list of pair(candidate name, score) sorted by the score */
-		List<Pair<String, Integer>> scores = candidates.stream()
+		return candidates.stream()
 				/* Map each candidate to a pair of candidate name and the score that results
 				 * from the evaluation process */
 				.map(c -> {
@@ -77,7 +89,6 @@ public class BaseTemplatePatternTest extends TestSupport {
 				.sorted(Comparator.comparing(
 						(Pair<String, Integer> p) -> p.getRight()).reversed()) /* sort the stream by score */
 				.collect(Collectors.toList()); /* collect the stream into a list */
-		return scores;
 	}
 
 }
