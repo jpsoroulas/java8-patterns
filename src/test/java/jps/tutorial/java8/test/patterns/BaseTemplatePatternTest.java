@@ -1,6 +1,9 @@
 package jps.tutorial.java8.test.patterns;
 
-import java.util.Comparator;
+import static java.util.Collections.reverseOrder;
+import static java.util.Comparator.comparing;
+import static org.testng.Assert.assertTrue;
+
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -40,9 +43,17 @@ public class BaseTemplatePatternTest extends TestSupport {
 	protected void evaluationProcess(IEvaluationProcess process, ToIntFunction<Candidate> specialEvaluation) {
 		/* Build the candidates */
 		List<Candidate> candidates = DataUtils.buildCandidates(50);
-		/* Calculate scores */
+		/* Calculate scores. Lets assume that this is an external service that returns a list
+		 * of Pair sorted descending by scores */
 		List<Pair<String, Integer>> scores = calculateScores(candidates, process);
-
+		/* Test if the list is ordered by scores */
+		scores.stream()
+				.reduce((previous, next) -> {
+					assertTrue(
+							next.getRight().compareTo(previous.getRight()) <= 0,
+							"Unexpected scores order");
+					return next;
+				});
 		/* A mostly naive test to confirm that the specific evaluation algorithm is correctly applied.
 		 * just check if the total score is the sum of the common and the special evaluation algorithms */
 		Map<String, Candidate> cmap = candidates.stream()
@@ -51,16 +62,16 @@ public class BaseTemplatePatternTest extends TestSupport {
 						.toMap(
 								Candidate::getName,
 								Function.identity()));
-
-		scores.stream().forEach(score -> {
-			Candidate candidate = cmap.get(score.getLeft()); /* Get the candidate by his name */
-			/* If Function and not ToIntFunction is used you can try the andThen(...) and compose methods*/
-			Integer expectedScore =
-					ProcessEvaluationAlgorithms.common(candidate) + /* The common evaluation algorithm */
-							specialEvaluation.applyAsInt(candidate); /* Apply the special evaluation algorithm */
-			Assert.assertEquals(score.getRight(), expectedScore,
-					"Unexpected score");
-		});
+		scores.stream()
+				.forEach(score -> {
+					Candidate candidate = cmap.get(score.getLeft()); /* Get the candidate by his name */
+					/* If Function and not ToIntFunction is used you can try the andThen(...) and compose methods*/
+					Integer expectedScore =
+							ProcessEvaluationAlgorithms.common(candidate) + /* The common evaluation algorithm */
+									specialEvaluation.applyAsInt(candidate); /* Apply the special evaluation algorithm */
+					Assert.assertEquals(score.getRight(), expectedScore,
+							"Unexpected score");
+				});
 	}
 
 	/**
@@ -86,8 +97,9 @@ public class BaseTemplatePatternTest extends TestSupport {
 				/* In this case, the reversed() breaks the compiler's type inferencing mechanism,
 				 * use lambda expression providing explicitly the type parameters */
 				// .sorted(Comparator.comparing(Pair::getRight).reversed())
-				.sorted(Comparator.comparing(
-						(Pair<String, Integer> p) -> p.getRight()).reversed()) /* sort the stream by score */
+				.sorted(
+						reverseOrder(
+								comparing((Pair<String, Integer> p) -> p.getRight()))) /* sort the stream by score */
 				.collect(Collectors.toList()); /* collect the stream into a list */
 	}
 

@@ -1,6 +1,7 @@
 package jps.tutorial.java8.test.streams;
 
-import java.util.Comparator;
+import static java.util.Comparator.comparing;
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -45,7 +46,7 @@ public class ComparatorTest extends TestSupport {
 		List<Candidate> candidates = DataUtils.buildCandidatesByName("Javaman", 5);
 		/* Sort by the list by name and age using Collections API and method references */
 		candidates.sort(
-				Comparator.comparing(Candidate::getName)
+				comparing(Candidate::getName)
 						.thenComparingInt(Candidate::getAge));
 		/* Print the sorted collection */
 		//    DataUtils.printList(candidates);
